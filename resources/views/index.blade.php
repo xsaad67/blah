@@ -33,165 +33,153 @@
     .mt5{
         margin-top:5px;
     }
+    .bg-img-3 {
+    background: url({{asset('wp-content/uploads/32.jpg')}});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.pr-40px, .px-40px {
+    padding-right: 40px!important;
+}
+.pl-40px, .px-40px {
+    padding-left: 40px!important;
+}
+.pb-60px, .py-60px {
+    padding-bottom: 60px!important;
+}
+.pt-60px, .py-60px {
+    padding-top: 60px!important;
+}
+
+.mb60{
+    margin-bottom:60px;
+}
 </style>
 
 @endsection
 
 @section('content')
 
-<div style="display:none !important">
-@foreach($categories as $category)
 
-<div class="section-title">
-    <h2>
-    <span>{{ $category->name }} </span>
-    <a class="d-block pull-right morefromcategory" href="/category/{{$category->slug}}">
-        More &nbsp; <i class="fa fa-angle-right"></i>
-    </a>
-    <div class="clearfix"></div>
-    </h2>
-</div>
 
-@if($loop->index%2 == 0)
+<div class="row mb25">
 
-    <section class="featured-posts">
-        <div class="row listfeaturedtag margneg10">
-            @foreach($category->latestposts->take(4) as $post)
+    <div class="col-lg-4 col-xs-12 mb10">
 
-                <div class="col-md-6 col-lg-6 col-sm-6 padlr10">
-                    <div class="card" id="post-{{ encrypt($post->id) }}">
-                        <div class="row">
-                            <div class="col-md-5 wrapthumbnail">
-                                <a href="{{$post->link}}">
-                                    <div class="thumbnail" style="background-image:url({{$post->featuredMedia('medium')}})"></div>
-                                </a>
-                            </div>
-                            <div class=" col-md-7 ">
-                                <div class="card-block">
-                                    <h2 class="card-title"> <a href="{{$post->link}}">{{trucnateStringh($post->title,40)}}</a></h2>
-                                    <span class="card-text d-block">
-                                        {{ trucnateStringh($post->body,100) }}
-                                    </span>
-                                    <div class="metafooter">
-                                        <div class="wrapfooter">
-                                            <span class="meta-footer-thumb">
-                        <a href="{{$post->user->link}}">
-                        <img alt='' src='{{$post->user->dp}}' srcset='' class='avatar avatar-40 photo author-thumb' height='40' width='40' /> 
-                         </a>
-                    </span>
-                    <span class="author-meta">
-                        <span class="post-name">
-                        <a href="{{$post->user->link}}">{{ $post->user->name}}</a></span><br>
-                                            <span class="post-date">{{ $post->created_at->diffForHumans() }}</span><span class="dot"></span>
-                                            <span class="readingtime">{{ wordToMinutes($post->body) }} min read</span>
-                                            </span>
-                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    @foreach($popularPost as $key=>$post)    
+        @if($loop->first)
+    
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{$post->featuredMedia('large')}}" class="img-fluid" style="height:100px !important; width:450px; !important; object-fit:cover;">
                 </div>
-
-            @endforeach
-        </div>
-    </section>
-
-@else
-
-    <div class="row listrecent">
-
-                    @foreach($category->latestposts->take(5) as $post)
-                           
-                            @if ($loop->first)
-                              
-                    <div class="col-md-4 col-lg-4 col-sm-4 padr10" id="post-{{encrypt($post->id)}}">
-                        <div class="card post highlighted">
-
-                            <a class="thumbimage" href="{{$post->link}}" style="background-image:url({{$post->featuredMedia('medium')}})">
-                                
-                            </a>
-                            <div class="card-block">
-                                <h2 class="card-title"><a href="{{$post->link}}">{{$post->title}}</a></h2>
-                                <span class="card-text d-block">{{trucnateStringh($post->body,100)}}</span>
-                                <div class="metafooter">
-                                    <div class="wrapfooter">
-                        <span class="meta-footer-thumb">
-                            <a href="{{$post->user->link}}">
-                        <img alt='' src='{{$post->user->dp}}' srcset='' class='avatar avatar-40 photo author-thumb' height='40' width='40' /> 
-                         </a>
-                         </span>
+                <div class="col-lg-10 offset-lg-2">
+                   <h2 class="post-title"><a href="{{$post->link}}">{{$post->title}}</a></h2>
+                   <p>{{ trucnateStringh($post->body,60) }}</p>
+                    <div class="wrapfooter">
                         <span class="author-meta">
-                        <span class="post-name">
-                            <a href="{{$post->user->link}}">{{ $post->user->name }}</a>
+                            <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span>  in <a href="{{$post->category->link}}">{{$post->category->name}}</a> 
+                            <br>
+                            <span class="post-date">{{$post->created_at->diffForHumans()}}</span>
+                            <span class="dot"></span>
+                            <span class="readingtime">4 min read</span>
                         </span>
-                        <br>
-                        <span class="post-date">{{ $post->created_at->diffForHumans() }}</span>
-                        <span class="dot"></span>
-                           <span class="readingtime">{{ wordToMinutes($post->body) }} min read</span>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-md-8 col-lg-8 col-sm-8">
-                        <div class="row skipfirst">
 
-                            @endif
-                            
-                            <div class="col-md-6 col-lg-6 col-sm-6 grid-item" id="post-{{encrypt($post->id)}}">
+                </div>
+            </div>
+                  
+            @php $popularPost->forget($key); break; @endphp
 
-                                <div class="card post height262">
-                                    <a class="thumbimage" href="{{$post->link}}" style="background-image:url({{$post->featuredMedia('medium')}}"></a>
-                                    <div class="card-block">
-                                        <h2 class="card-title">
-                                            <a href="{{$post->link}}">{{trucnateStringh($post->title,40)}}</a>
-                                        </h2>
-                                        <div class="metafooter">
-                                            <div class="wrapfooter">
-                                                 <span class="meta-footer-thumb">
-                            <a href="{{$post->user->link}}">
-                        <img alt='' src='{{$post->user->dp}}' srcset='' class='avatar avatar-40 photo author-thumb' height='40' width='40' /> 
-                         </a>
-                         </span>
-                                                <span class="author-meta">
-                        <span class="post-name">
-                        <a href="{{$post->user->link}}">{{$post->user->name}}</a></span><br>
-                                                <span class="post-date">{{ $post->created_at->diffForHumans() }}</span>
-                                                <span class="dot"></span>
-                                                <span class="readingtime">{{ wordToMinutes($post->body) }} min read</span>
-                                                </span>
-                                
-                                    </div>
-                                  </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @if($loop->last)
-
-                        </div>
-                    </div>
-                            @endif
-                    @endforeach
-
-                 
-                    <div class="clearfix"></div>
+        @endif
+    @endforeach
 
     </div>
 
-@endif
+    <div class="col-lg-4 col-xs-12 mb10">
+        @foreach($popularPost as $key=>$post)
+            <div class="row mb10">
+                <div class="col-3">
+                    <a href="{{$post->link}}">
+                        <img class="img-fluid" src="{{$post->featuredMedia('medium')}}">
+                    </a> 
+                </div>
+                <div class="col-9">
+                    <h2 class="post-title sidebar-text"><a href="{{$post->link}}" style="font-size:13px;">{{$post->title}}</a></h2>
+
+                    <div class="wrapfooter">
+                        <span class="author-meta">
+                            <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span> </a> 
+                            <br>
+                            <span class="post-date">{{$post->created_at->diffForHumans()}}</span>
+                            <span class="dot"></span>
+                            <span class="readingtime">4 min read</span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            @php $popularPost->forget($key); if($loop->iteration ==3) {break;} @endphp
+        @endforeach
+    </div>
+
+    <div class="col-lg-4 col-xs-12 mb10">
+
+    @foreach($popularPost as $key=>$post)    
+        @if($loop->last)
+    
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{$post->featuredMedia('large')}}" class="img-fluid" style="height:100px !important; width:450px; !important; object-fit:cover;">
+                </div>
+                <div class="col-lg-10 offset-lg-2">
+                   <h2 class="post-title"><a href="{{$post->link}}">{{$post->title}}</a></h2>
+                   <p>{{ trucnateStringh($post->body,60) }}</p>
+                    <div class="wrapfooter">
+                        <span class="author-meta">
+                            <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span>  in <a href="{{$post->category->link}}">{{$post->category->name}}</a> 
+                            <br>
+                            <span class="post-date">{{$post->created_at->diffForHumans()}}</span>
+                            <span class="dot"></span>
+                            <span class="readingtime">4 min read</span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+                  
+            @php $popularPost->forget($key); break; @endphp
+
+        @endif
+    @endforeach
+
+    </div>
+
+</div>
 
 
-@endforeach
-</span>
+<div class="row bg-img-3 px-40px py-60px mb60">
+    <div class="col-md-6">
+        <h3 class="mb-10px">Subscribe and Stay Informed</h3>
+        <p>Subscribe to our newsletter and stay informed of what latest happening </p>
+        <div class="form-group form-row mb-0">
+
+            <div class="input-group mb-3">
+                <input class="form-control" type="email" id="subEmail" placeholder="Your email">
+                <div class="input-group-append">
+                    <button class="btn box-shadow-none" id="subcribe-btn" type="button">Subscribe</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
 <div class="row">
 
-    <div class="col-8">
+    <div class="col-lg-8 col-xs-12">
         @foreach($categories as $category)
 
         <div class="section-title">
@@ -234,7 +222,7 @@
         @endforeach
     </div>
 
-    <div class="col-4  align-items-center">
+    <div class="col-4  align-items-center d-none d-sm-block d-lg-block">
         <div class="sticky-top sticky-offset">
         <div class="section-title">
             <h2> <span>Popular on Blogprotalk</span> 
@@ -261,6 +249,41 @@
     </div>
 </div>
 
+@endsection
+
+@section("footer")
+
+<script type="text/javascript">
+    $(function(){
+        $("#subcribe-btn").click(function(){
+
+            var subEmail = $("#subEmail").val();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type:'POST',
+                url:'{{action('NewsLetterController@store')}}',
+                data:{ email: subEmail },
+                context: this,
+                success:function(data){
+
+                },
+                error: function (xhr) {
+                $('#subscribe-errors').html('');
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        $('#subscribe-errors').append('<div class="alert alert-danger mb10 mt5">'+value+'</div');
+                    }); 
+                },
+            });
+
+        });
+    });
+</script>
 @endsection
 
 

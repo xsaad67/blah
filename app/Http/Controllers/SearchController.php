@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\NewsLetter;
 use Illuminate\Http\Request;
+use App\Post;
 
-class NewsLetterController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request)
+    {   
+        if(!isset($request->q)){
+            return redirect('/');
+        }
+
+        $result = Post::where('title','LIKE','%'.$request->q.'%')->
+                        orWhere('body','LIKE','%'.$request->q.'%')->
+                        get();
+        $count =count($result);
+        $query = $request->q;
+        return view('search.index',compact('result','count','query'));
     }
 
     /**
@@ -35,26 +44,16 @@ class NewsLetterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|unique:news_letters,email',
-        ]);
-
-        $newsLetter = new NewsLetter();
-        $newsLetter->email = $request->email;
-        $isSave = $newsLetter->save();
-
-        if($isSave){
-            return response()->json(['success'=>true]);
-        }
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\NewsLetter  $newsLetter
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(NewsLetter $newsLetter)
+    public function show($id)
     {
         //
     }
@@ -62,10 +61,10 @@ class NewsLetterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\NewsLetter  $newsLetter
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(NewsLetter $newsLetter)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +73,10 @@ class NewsLetterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\NewsLetter  $newsLetter
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NewsLetter $newsLetter)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +84,10 @@ class NewsLetterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\NewsLetter  $newsLetter
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NewsLetter $newsLetter)
+    public function destroy($id)
     {
         //
     }

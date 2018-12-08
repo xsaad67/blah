@@ -36,6 +36,7 @@ Route::get('/sitemap.xml','PostController@sitemap');
 
 /** Category Routes **/
 
+Route::get('/search','SearchController@index');
 
 Route::get('/create-category','CategoryController@create');
 Route::post('/post-category','CategoryController@store');
@@ -56,7 +57,7 @@ Route::post('/update-profile','UserController@updateProfile');
 
 /** Admin Routes**/
 Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
-
+Route::post('/subscribe','NewsLetterController@store');
 
 
 /** Allowed For Admin Only **/

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="SvR3wpjkF5FgMgsyV08uywIK5Dxa41lmrSt6oJA0CS4" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>@yield('title') </title>
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <title>@yield('title',env("APP_NAME"))</title>
     <meta name="description" content="@yield('description')" />
     <link rel='stylesheet' href='{{asset("wp-content/themes/mediumishh/assets/css/bootstrap.min.css")}}' type='text/css' media='all' />
     <link rel='stylesheet' href='{{asset("wp-content/themes/mediumishh/style6959.css")}}' type='text/css' media='all' />
@@ -124,6 +124,13 @@
                 </div>
 
                 <div class="col-lg-3 col-md-3  col-xs-2 text-right logoarea">
+
+                    <form role="search" method="get" class="search-form" action="{{action('SearchController@index')}}">
+                        <input type="search" class="search-field" placeholder="Search..." value="" name="q" title="Search for:">
+                        <button type="submit" class="search-submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
 
                     @if(!auth()->check())   
                        {{--  <a href="/login">Login</a> 

@@ -11,7 +11,7 @@ class CategoryController extends Controller
    
     public function index()
     {
-        $popularPost =  \App\Post::popular(6)->get();
+        $popularPost =  \App\Post::popular(10)->get();
 
         $categories = Category::has('posts', '>=', 3)->take(5)->get();
         foreach ($categories as $category)
