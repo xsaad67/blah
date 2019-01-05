@@ -109,33 +109,12 @@
             <!-- Begin Logo -->
             <div class="row justify-content-center align-items-center brandrow">
 
-                <div class="col-lg-4 col-md-4 col-xs-12 hidden-xs-down customarea">
+                <div class="col-lg-4 col-md-4 col-xs-12 ">
 
-
-
-                {{--    <a class="btn follow" href="https://twitter.com/wowthemesnet" target="blank"><i class="fa fa-twitter"></i> Follow</a>
-                    <a target="_blank" href="https://plus.google.com/+WowthemesNet"> <i class="fa fa-google-plus social"></i></a>
-                    <a target="_blank" href="https://facebook.com/wowthemesnet"> <i class="fa fa-facebook social"></i></a> --}}
-
-                </div>
-
-                <div class="col-lg-4 col-md-4  col-xs-6 text-center logoarea">
-                    <a class="navbar-brand" href="{{ url ('/') }}">{{ env("APP_NAME")}}</a>
-                </div>
-
-                <div class="col-lg-3 col-md-3  col-xs-2 text-right logoarea">
-
-                    <form role="search" method="get" class="search-form" action="{{action('SearchController@index')}}">
-                        <input type="search" class="search-field" placeholder="Search..." value="" name="q" title="Search for:">
-                        <button type="submit" class="search-submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-
-                    @if(!auth()->check())   
-                       {{--  <a href="/login">Login</a> 
+                       @if(!auth()->check())   
+                        <a href="/login">Login</a> 
                     <span style="color:#00ab6b;"> / </span>
-                    <a href="/register">Get Started</a> --}}
+                    <a href="/register">Get Started</a> 
 
                     @else
                 
@@ -161,6 +140,24 @@
                      
 
                     @endif
+
+
+                </div>
+
+                <div class="col-lg-4 col-md-4  col-xs-6 text-center logoarea">
+                    <a class="navbar-brand" href="{{ url ('/') }}">{{ env("APP_NAME")}}</a>
+                </div>
+
+                <div class="col-lg-3 col-md-3  col-xs-2 text-right logoarea">
+
+                    <form role="search" method="get" class="search-form" action="{{action('SearchController@index')}}">
+                        <input type="search" class="search-field" placeholder="Search..." value="" name="q" title="Search for:">
+                        <button type="submit" class="search-submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+
+                 
           
                 </div>
 

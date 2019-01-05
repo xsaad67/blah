@@ -34,27 +34,33 @@
         margin-top:5px;
     }
     .bg-img-3 {
-    background: url({{asset('wp-content/uploads/32.jpg')}});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-.pr-40px, .px-40px {
-    padding-right: 40px!important;
-}
-.pl-40px, .px-40px {
-    padding-left: 40px!important;
-}
-.pb-60px, .py-60px {
-    padding-bottom: 60px!important;
-}
-.pt-60px, .py-60px {
-    padding-top: 60px!important;
-}
+        background: url({{asset('wp-content/uploads/32.jpg')}});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    .pr-40px, .px-40px {
+        padding-right: 40px!important;
+    }
+    .pl-40px, .px-40px {
+        padding-left: 40px!important;
+    }
+    .pb-60px, .py-60px {
+        padding-bottom: 60px!important;
+    }
+    .pt-60px, .py-60px {
+        padding-top: 60px!important;
+    }
 
-.mb60{
-    margin-bottom:60px;
-}
+    .mb60{
+        margin-bottom:60px;
+    }
+
+    .alert-primary {
+        color: #004085;
+        background-color: #cce5ff;
+        border-color: #b8daff;
+    }
 </style>
 
 @endsection
@@ -172,6 +178,8 @@
                 </div>
             </div>
 
+            <div id="subscribe-msg"></div>
+
         </div>
     </div>
 </div>
@@ -271,12 +279,13 @@
                 data:{ email: subEmail },
                 context: this,
                 success:function(data){
-
+                     $('#subscribe-msg').html('');
+                     $('#subscribe-msg').append('<div class="alert alert-success mb10 mt5">You are successfully subscribed to our newsletter</div')
                 },
                 error: function (xhr) {
-                $('#subscribe-errors').html('');
+                $('#subscribe-msg').html('');
                     $.each(xhr.responseJSON.errors, function(key,value) {
-                        $('#subscribe-errors').append('<div class="alert alert-danger mb10 mt5">'+value+'</div');
+                        $('#subscribe-msg').append('<div class="alert alert-danger mb10 mt5">'+value+'</div');
                     }); 
                 },
             });

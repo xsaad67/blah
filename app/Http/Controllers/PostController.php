@@ -89,7 +89,8 @@ class PostController extends Controller
         
         $is_save=$post->save();
         if($is_save == 1){
-            return back()->withSuccess('Post uploaded');
+            $redPost = Post::find($post->id);
+            return redirect($redPost->link)->withSuccess('Your post has been successfully created');
         }
 
 
@@ -155,7 +156,7 @@ class PostController extends Controller
        }
 
       $post->save();
-      return back()->with("message","Post updated");
+      return redirect($post->link)->withSuccess('Your post has been successfully updated');
     }
 
     /**
