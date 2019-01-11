@@ -3,6 +3,8 @@
 @section('css')
 
 
+    <link rel="stylesheet" type="text/css" href='{{asset("wp-content/themes/mediumishh/assets/css/bootstrap.min.css")}}'>
+
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href='{{asset("wp-content/themes/mediumishh/assets/css/animate.css")}}'>
@@ -21,6 +23,7 @@
     background: -o-linear-gradient(-135deg, #c850c0, #4158d0) !important;
     background: -moz-linear-gradient(-135deg, #c850c0, #4158d0) !important;
     background: linear-gradient(-135deg, #c850c0, #4158d0) !important;
+    padding-top:30px !important;
 }
     .wrap-login100{
         padding-top:100px !important;
@@ -86,14 +89,7 @@
                 </button>
             </div>
 
-            <div class="text-center p-t-12">
-                <span class="txt1">
-                    Forgot
-                </span>
-                <a class="txt2" href="#">
-                    Username / Password?
-                </a>
-            </div>
+            
 
             <div class="text-center p-t-136">
                 <a class="txt2" href="/register">
@@ -113,6 +109,7 @@
 @section('footer')
 
 <script type='text/javascript' src='{{asset("wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4")}}'></script>
+<script type='text/javascript' src='{{asset("wp-content/themes/mediumishh/assets/js/bootstrap.min.js")}}'></script>
     <script src='{{asset("wp-content/themes/mediumishh/assets/js/popper.min.js")}}'></script>
     <script src='{{asset("wp-content/themes/mediumishh/assets/js/select2.min.js")}}'></script>
 

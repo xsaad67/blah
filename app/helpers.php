@@ -30,7 +30,7 @@ if(!function_exists('wordToMinutes')){
 
 	function wordToMinutes($content){
 	 $words = str_word_count(strip_tags($content));
-	 return round(($words/130),0,PHP_ROUND_HALF_DOWN);
+	 return round(($words/170),0,PHP_ROUND_HALF_DOWN);
 	}
 	
 }

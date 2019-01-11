@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\ParentList;
+use App\ChildList;
 
 
 class CategoryController extends Controller
@@ -11,15 +13,18 @@ class CategoryController extends Controller
    
     public function index()
     {
-        $popularPost =  \App\Post::popular(10)->get();
-
+        $popularPost =  \App\Post::popular(15)->get();
+        
+        $popularLists = ParentList::with('childs')->get();
+        
         $categories = Category::has('posts', '>=', 3)->take(5)->get();
+        
         foreach ($categories as $category)
         {
          $category->latestposts = $category->posts()->inRandomOrder()->orderBy('created_at','desc')->take(5)->get();
         }
 
-        return view('index',compact('categories','popularPost'));
+        return view('index',compact('categories','popularPost','popularLists'));
     }
 
     

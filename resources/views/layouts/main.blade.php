@@ -93,9 +93,21 @@
     -moz-font-feature-settings: "liga" on;
 }
 
+.nav-up .navbar-brand {
+    opacity: 100;
+    transition: all 0.2s;
+}
 
     </style>
     @yield('css')
+    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7018522938301686",
+        enable_page_level_ads: true
+      });
+    </script>
 </head>
 
 <body class="home blog">
@@ -105,7 +117,15 @@
     <header class="navbar-light bg-white fixed-top mediumnavigation">
 
         <div class="container">
-
+            <p class="text-center">
+            <a href="/login" style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #1c9963;
+                    "><span class="fa fa-pencil-square" style="
+                        font-size: 25px;
+                    "></span>
+                    We are actively looking for guest post writer</a></p>
             <!-- Begin Logo -->
             <div class="row justify-content-center align-items-center brandrow">
 
@@ -128,11 +148,10 @@
                     <a class="dropdown-item" href="/create-post">Create Post</a>
                     <a class="dropdown-item" href="/home">View Posts</a>
                     <a class="dropdown-item" href="/trashed-posts">Trashed Posts</a>
-                    <a class="dropdown-item" style="border-top:1px solid #e4e1e1; margin-top:5px; padding-top:5px;" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"> Logout</a>
-                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                    <a class="dropdown-item" style="border-top:1px solid #e4e1e1; margin-top:5px; padding-top:5px;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> Logout</a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
 
                   </div>
                 </div> 
@@ -169,9 +188,9 @@
 
     </header>
     <div class="site-content">
-        <div class="container">
+        <div class="container-fluid">
           @yield('content')
-        </div>    <!-- /.container -->
+        </div>    {{--End Container--}}
     </div>    <!-- /.site-content -->
 
 @yield('postcontent')

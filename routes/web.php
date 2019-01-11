@@ -16,6 +16,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/author/{slug}','UserController@show');
 
+Route::get('/voteup','VoteController@voteup');
+Route::get('/votedown','VoteController@voteDown');
 /* Home Page */
 Route::get('/','CategoryController@index');
 Route::post('upload_image','PostController@uploadImage')->name('upload-image');

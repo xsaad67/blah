@@ -34,7 +34,7 @@
 </div>
 	<div class="row listrecent">
 
-@foreach($category->posts as $post)
+@foreach($category->posts()->latest()->get() as $post)
 <div class="col-md-4 grid-item d-flex align-items-stretch">
       <div class="card post tag-getting-started" >
       <a href="{{$post->link}}">

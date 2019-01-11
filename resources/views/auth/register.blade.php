@@ -23,6 +23,7 @@
     background: -moz-linear-gradient(-135deg, #c850c0, #4158d0) !important;
     background: linear-gradient(-135deg, #c850c0, #4158d0) !important;
     margin-top:40px !important; 
+    padding-top:30px !important;
 }
     .wrap-login100{
         padding-top:100px !important;
