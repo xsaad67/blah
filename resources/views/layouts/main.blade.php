@@ -98,6 +98,98 @@
     transition: all 0.2s;
 }
 
+.list-box{
+    border-bottom: 5px solid #f4b350;
+    box-shadow: rgba(0, 0, 0, 0.75) -1px 2px 18px -4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    float: left;
+    background: #564d50;
+    border-radius: 5px;
+    width:100%;
+}
+.ribbon {
+   position: absolute;
+   right: -5px; top: -5px;
+   z-index: 1;
+   overflow: hidden;
+   width: 75px; height: 75px; 
+   text-align: right;
+}
+.ribbon span {
+   font-size: 10px;
+   color: #fff; 
+   text-transform: uppercase; 
+   text-align: center;
+   font-weight: bold; line-height: 20px;
+   transform: rotate(45deg);
+   width: 100px; display: block;
+   background: #f4b350;
+   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+   position: absolute;
+   top: 19px; right: -21px;
+}
+.ribbon span::before {
+   content: '';
+   position: absolute; 
+   left: 0px; top: 100%;
+   z-index: -1;
+   border-left: 3px solid #f4b350;
+   border-right: 3px solid transparent;
+   border-bottom: 3px solid transparent;
+   border-top: 3px solid #f4b350;
+}
+.ribbon span::after {
+   content: '';
+   position: absolute; 
+   right: 0%; top: 100%;
+   z-index: -1;
+   border-right: 3px solid #f4b350;
+   border-left: 3px solid transparent;
+   border-bottom: 3px solid transparent;
+   border-top: 3px solid #f4b350;
+}
+.color-yellow{
+    color:#f4b350!important;
+}
+.heading-p{
+    font-size:18px;
+    font-weight: 700;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+ol.list-10{
+    list-style: none;
+    counter-reset: my-awesome-counter;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+ol.list-10 > li {
+  counter-increment: my-awesome-counter;
+  padding-bottom:15px;
+  font-weight: 600;
+  color:#fff;
+
+}
+ol.list-10 >li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: #f4b350;
+  font-weight: bold;
+}
+ol.list-10 a{
+    color:#f4b350;
+}
+
+.btn-yellowish{
+    color: #564d50;
+    font-weight: 600;
+    background-color: #f4b350;
+    border-color: #f4b350;
+}
+
+
     </style>
     @yield('css')
     
@@ -219,6 +311,18 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-114351479-3');
+
+  $(function(){
+      $('ol')
+      .find('li:gt(3)')
+      .hide()
+      .end()
+      .append(
+        $('  <div class="text-center"><button class="load-more btn btn-yellowish">Load More</button></div>').click( function(){
+            $(this).siblings(':hidden').show().end().remove();
+        })
+        );
+  });
 </script>
 
 </body>

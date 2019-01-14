@@ -21,7 +21,7 @@ class CategoryController extends Controller
         
         foreach ($categories as $category)
         {
-         $category->latestposts = $category->posts()->inRandomOrder()->orderBy('created_at','desc')->take(5)->get();
+            $category->latestposts = $category->posts()->inRandomOrder()->orderBy('created_at','desc')->take(5)->get();
         }
 
         return view('index',compact('categories','popularPost','popularLists'));
@@ -44,8 +44,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         
-        
-
         // Local Variable
         $imageName = NULL;
 

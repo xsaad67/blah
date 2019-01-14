@@ -105,14 +105,18 @@ class PostController extends Controller
      */
     public function show($category,$slug)
     { 
+
         $post = Post::where('slug', '=', $slug)->firstOrFail();
-      
+        $popularLists = $post->category->lists()->take(3)->get();
+        if($popularLists->isEmpty()){
+          $popularLists = \App\ParentList::take(3)->inRandomOrder()->get();
+        }
+        // return $categoryList;
         $post->increment('views');
         $medias = $post->medias->all();
-        $clapCount = $post->claps->count(); 
         $wordToRead = wordToMinutes(strip_tags($post->body));
         $lastRows = Post::inRandomOrder()->take(3)->get();   
-        return view('posts.show',compact('post','medias','clapCount','wordToRead','lastRows'));
+        return view('posts.show',compact('post','medias','wordToRead','lastRows','popularLists'));
     }
 
     public function edit(Post $post)

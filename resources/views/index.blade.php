@@ -91,94 +91,12 @@
     color: rgba(0,0,0,.8);
     font-size:17px;
 }
-.list-box{
-    border-bottom: 5px solid #f4b350;
-    box-shadow: rgba(0, 0, 0, 0.75) -1px 2px 18px -4px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    float: left;
-    background: #564d50;
-    border-radius: 5px;
-}
-.ribbon {
-   position: absolute;
-   right: -5px; top: -5px;
-   z-index: 1;
-   overflow: hidden;
-   width: 75px; height: 75px; 
-   text-align: right;
-}
-.ribbon span {
-   font-size: 10px;
-   color: #fff; 
-   text-transform: uppercase; 
-   text-align: center;
-   font-weight: bold; line-height: 20px;
-   transform: rotate(45deg);
-   width: 100px; display: block;
-   background: #f4b350;
-   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-   position: absolute;
-   top: 19px; right: -21px;
-}
-.ribbon span::before {
-   content: '';
-   position: absolute; 
-   left: 0px; top: 100%;
-   z-index: -1;
-   border-left: 3px solid #f4b350;
-   border-right: 3px solid transparent;
-   border-bottom: 3px solid transparent;
-   border-top: 3px solid #f4b350;
-}
-.ribbon span::after {
-   content: '';
-   position: absolute; 
-   right: 0%; top: 100%;
-   z-index: -1;
-   border-right: 3px solid #f4b350;
-   border-left: 3px solid transparent;
-   border-bottom: 3px solid transparent;
-   border-top: 3px solid #f4b350;
-}
-.color-yellow{
-    color:#f4b350!important;
-}
-.heading-p{
-    font-size:18px;
-    font-weight: 700;
-}
 
-ol.list-10{
-    list-style: none;
-    counter-reset: my-awesome-counter;
-    padding-left: 25px;
-    padding-right: 25px;
+p.cu-heading > a{
+    font-size:16px;
+    font-weight:600;
+    color:#000;
 }
-ol.list-10 > li {
-  counter-increment: my-awesome-counter;
-  padding-bottom:15px;
-  font-weight: 600;
-  color:#fff;
-
-}
-ol.list-10 >li::before {
-  content: counter(my-awesome-counter) ". ";
-  color: #f4b350;
-  font-weight: bold;
-}
-ol.list-10 a{
-    color:#f4b350;
-}
-
-.btn-yellowish{
-    color: #564d50;
-    font-weight: 600;
-    background-color: #f4b350;
-    border-color: #f4b350;
-}
-
 
 body {
   font-family: Montserrat, sans-serif;
@@ -192,7 +110,7 @@ body {
 
 <div class="row mb-3">
     <div class="mx-auto d-block">
-        <img src="https://via.placeholder.com/968x100?text=Shop%20at%20amazon">
+        <iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=48&l=ur1&category=amazonhomepage&f=ifr&linkID=30dc6496e22923e7bee5a47d4c9bf84e&t=snblog-20&tracking_id=snblog-20" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
     </div>
 </div>
 <div class="row mb25">
@@ -261,11 +179,10 @@ body {
                         </a>
                     </div>
                     <div class="col-lg-10 ml-2">
-                       <h2 class="post-title"><a href="{{$post->link}}">{{$post->title}}</a></h2>
-                       <p  class="text-lead">{{ trucnateStringh($post->body,100) }}</p>
+                       <p class="cu-heading mt-2"><a href="{{$post->link}}">{{$post->title}}</a></h2>
                         <div class="wrapfooter">
                             <span class="author-meta">
-                                <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span>  in <a href="{{$post->category->link}}">{{$post->category->name}}</a> 
+                                <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span>
                                 <br>
                                 <span class="post-date">{{$post->created_at->diffForHumans()}}</span>
                                 <span class="dot"></span>
@@ -281,7 +198,7 @@ body {
             @endif
         @endforeach
 
-        <img src="https://via.placeholder.com/468x440?text=Shop%20at%20amazon" class="img-fluid mt-2">
+        <iframe class="mx-auto d-block mt-2" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=snblog-20&marketplace=amazon&region=US&placement=B06Y3KYN11&asins=B06Y3KYN11&linkId=d82b5a56b34f970222acc30c55ec183d&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066C0&bg_color=FFFFFF"></iframe>
     </div>
     <div class="col-lg-4 col-xs-12 mb10">
         @foreach($popularPost as $key=>$post)
@@ -317,11 +234,10 @@ body {
                         <img src="{{$post->featuredMedia('large')}}" class="img-fluid" style="height:100px !important; width:450px; !important; object-fit:cover;">
                     </div>
                     <div class="col-lg-12 ml-1">
-                       <h2 class="post-title"><a href="{{$post->link}}">{{$post->title}}</a></h2>
-                       <p  class="text-lead">{{ trucnateStringh($post->body,100) }}</p>
+                        <p class="cu-heading mt-2"><a href="{{$post->link}}">{{$post->title}}</a></p>
                         <div class="wrapfooter">
                             <span class="author-meta">
-                                <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span>  in <a href="{{$post->category->link}}">{{$post->category->name}}</a> 
+                                <span class="post-name"><a href="{{$post->user->link}}">{{$post->user->name}}</a> </span>
                                 <br>
                                 <span class="post-date">{{$post->created_at->diffForHumans()}}</span>
                                 <span class="dot"></span>
@@ -338,7 +254,7 @@ body {
         @endforeach
 
 
-        <img src="https://via.placeholder.com/468x440?text=Shop%20at%20amazon" class="img-fluid mt-2">
+        <iframe class="mx-auto d-block mt-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=snblog-20&marketplace=amazon&region=US&placement=B0792K2BK6&asins=B0792K2BK6&linkId=c6cba09d9d153ea08a99328834ea9db4&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff"></iframe>
     </div>
     <div class="col-lg-2">
         <div class="list-box">
@@ -420,10 +336,8 @@ body {
 <div class="row">
 
     <div class="col-lg-2">
-        <div class="list-box" style="margin-bottom:25px;">
-            @foreach($popularLists as $key=>$popular)
-
-            @if($loop->first)
+        @foreach($popularLists as $key=>$popular)
+            <div class="list-box" style="margin-bottom:25px;">
                 <div class="ribbon"><span>Popular</span></div>
         
                 <p class="color-yellow heading-p text-center" style="padding-top:25px;">{{ucwords($popular->heading)}}</p>
@@ -466,65 +380,8 @@ body {
                         </li>
                     @endforeach
                 </ol>
-                
-            @endif
-                 @php $popularLists->forget($key); break; @endphp
-            @endforeach
-        </div>
-
-        <div class="list-box">
-            @foreach($popularLists as $key=>$popular)
-
-            @if($loop->first)
-                <div class="ribbon"><span>Popular</span></div>
-        
-                <p class="color-yellow heading-p text-center" style="padding-top:25px;">{{ucwords($popular->heading)}}</p>
-        
-                <ol class="list-10">
-                    @foreach($popular->childs as $child)
-                        <li>
-                            {{$child->content}}
-
-                            <div class="d-flex mt-1">
-
-                                <div class="justify-content-start">
-                                    <a href="javascript: void(0)" class="upvote" style="padding-left:15px;" data-id = "{{$child->id}}">
-                                        @php 
-                                        $className = "fa-thumbs-o-up";
-                                        if($child->checkIfGuestUpVote(request()->ip)){
-                                            $className="fa-thumbs-up";
-                                        }
-                                        @endphp
-                                        <i class="fa {{$className}}" aria-hidden="true"></i>
-                                      
-                                        
-                                    </a>
-                                    <span style="padding-left:5px;" id="child-up-{{$child->id}}">{{$child->countUpVotes()}}</span>
-                                </div>
-
-                                <div class="justify-content-center">
-                                    <a href="javascript: void(0)"  class="downvote" style="padding-left:15px;"  data-id = "{{$child->id}}">
-                                        @php 
-                                        $className = "fa-thumbs-o-down";
-                                        if($child->checkIfGuestDownVote(request()->ip)){
-                                            $className="fa-thumbs-down";
-                                        }
-                                        @endphp
-                                        <i class="fa {{$className}}" aria-hidden="true" ></i>
-                                    </a>
-                                    <span style="padding-left:5px;" id="child-down-{{$child->id}}">{{$child->countDownVotes()}}</span>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ol>
-                
-            @endif
-                 @php $popularLists->forget($key); break; @endphp
-            @endforeach
-        </div>
-
-         
+            </div>
+        @endforeach
     </div>
 
     <div class="col-lg-6 col-xs-12">
@@ -592,7 +449,7 @@ body {
                 </div>
             </div>
         @endforeach
-         <div class="sticky-top sticky-offset">
+        <div class="sticky-top sticky-offset">
              
             <iframe class="mx-auto d-block" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=snblog-20&marketplace=amazon&region=US&placement=B06Y3KYN11&asins=B06Y3KYN11&linkId=d82b5a56b34f970222acc30c55ec183d&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066C0&bg_color=FFFFFF"></iframe>
             <iframe class="mx-auto d-block mt-3" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=snblog-20&marketplace=amazon&region=US&placement=B0792K2BK6&asins=B0792K2BK6&linkId=c6cba09d9d153ea08a99328834ea9db4&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff"></iframe>
@@ -600,7 +457,7 @@ body {
          {{--<a href="mailto:allassignmentassistance@gmail.com">
         <img class="img-fluid mt-1 mx-auto d-block" src="{{url('/wp-content/uploads/banner-5.png')}}">
         </a>--}}
-    </div>
+        </div>
     </div>
 </div>
 
@@ -611,17 +468,6 @@ body {
 <script type="text/javascript">
     $(function(){
 
-      $('ol')
-  .find('li:gt(3)')
-  .hide()
-  .end()
-  .append(
-    $('  <div class="text-center"><button class="load-more btn btn-yellowish">Load More</button></div>').click( function(){
-        $(this).siblings(':hidden').show().end().remove();
-    })
-);
-
-       
         $("#subcribe-btn").click(function(){
 
             var subEmail = $("#subEmail").val();

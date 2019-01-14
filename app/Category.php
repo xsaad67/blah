@@ -12,6 +12,10 @@ class Category extends Model
 		return $this->hasMany('App\Post');
 	}
 
+	public function lists(){
+		return $this->hasMany('App\ParentList');
+	}
+
 	public function getLinkAttribute()
 	{
 		return url("/category")."/".$this->slug;

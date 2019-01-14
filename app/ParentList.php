@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ParentList extends Model
 {
+    protected $with = ['childs'];
     
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 
     public function childs()
     {
